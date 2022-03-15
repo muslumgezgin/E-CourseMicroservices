@@ -17,11 +17,13 @@
     <None Remove="Dtos\" />
     <None Remove="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <None Remove="Mapping\" />
+    <None Remove="Settings\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
     <Folder Include="Dtos\" />
     <Folder Include="Mapping\" />
+    <Folder Include="Settings\" />
   </ItemGroup>
 </Project>
