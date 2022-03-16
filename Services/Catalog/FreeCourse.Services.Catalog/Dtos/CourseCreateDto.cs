@@ -1,5 +1,4 @@
-﻿using System;
-namespace FreeCourse.Services.Catalog.Dtos
+﻿namespace FreeCourse.Services.Catalog.Dtos
 {
 	internal class CourseCreateDto
 	{
