@@ -13,6 +13,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\" />
-    <Folder Include="ControllerBase\" />
+    <Folder Include="ControllerBases\" />
   </ItemGroup>
 </Project>

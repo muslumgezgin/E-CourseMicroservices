@@ -27,7 +27,7 @@ namespace FreeCourse.Services.Catalog
             services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
 
-            services.Configure<DatabaseSettings>(Configuration.GetSection("DatabeSettings"));
+            services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
 
             services.AddSingleton<IDatabaseSettings>(sp =>
             {
