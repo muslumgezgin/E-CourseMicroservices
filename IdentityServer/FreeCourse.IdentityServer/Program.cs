@@ -56,9 +56,10 @@ namespace FreeCourse.IdentityServer
 
                     if (!userManager.Users.Any())
                     {
+                        Log.Information("faefa");
                         userManager.CreateAsync(new ApplicationUser
                         {
-                            UserName = "Muslum gezgin",
+                            UserName = "Muslumgezgin",
                             Email="muslum_gezgin@hotmail.com",
                             City = "Batman"
 
