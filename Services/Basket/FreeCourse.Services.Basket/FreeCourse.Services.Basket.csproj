@@ -17,8 +17,10 @@
   <ItemGroup>
     <None Remove="Controllers\" />
     <None Remove="StackExchange.Redis" />
+    <None Remove="Dtos\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Dtos\" />
   </ItemGroup>
 </Project>
