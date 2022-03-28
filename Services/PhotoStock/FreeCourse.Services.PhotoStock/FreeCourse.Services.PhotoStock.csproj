@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -13,11 +14,12 @@
     <None Remove="wwwrooot\" />
     <None Remove="wwwrooot\Photos\" />
     <None Remove="Dtos\" />
+    <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="wwwrooot\" />
-    <Folder Include="wwwrooot\Photos\" />
+    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\Photos\" />
     <Folder Include="Dtos\" />
   </ItemGroup>
   <ItemGroup>

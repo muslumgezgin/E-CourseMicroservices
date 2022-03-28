@@ -23,7 +23,7 @@ namespace FreeCourse.Services.PhotoStock.Controllers
         {
             if(photo != null && photo.Length>0)
             {
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/photos",photo.FileName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Photos",photo.FileName);
 
                 using (var stream = new FileStream(path,FileMode.Create))
                 {
