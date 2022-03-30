@@ -18,9 +18,11 @@
     <None Remove="Dapper.Contrib" />
     <None Remove="Models\" />
     <None Remove="Controllers\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>
