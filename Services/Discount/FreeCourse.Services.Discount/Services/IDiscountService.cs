@@ -17,7 +17,8 @@ namespace FreeCourse.Services.Discount.Services
 
 		Task<Response<NoContent>> Delete(int id);
 
-		Task<Response<Models.Discount>> GetByCodeAndUserId(string code, int userId);
+		Task<Response<Models.Discount>> GetByCodeAndUserId(string code, string userId);
+
 
 	}
 }
