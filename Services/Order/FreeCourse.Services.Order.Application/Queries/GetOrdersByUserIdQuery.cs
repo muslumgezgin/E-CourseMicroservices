@@ -6,7 +6,7 @@ using MediatR;
 
 namespace FreeCourse.Services.Order.Application.Queries
 {
-	internal class GetOrdersByUserIdQuery :IRequest<Response<List<OrderDto>>>
+	public class GetOrdersByUserIdQuery :IRequest<Response<List<OrderDto>>>
 	{
         public string UserId { get; set; }
 
