@@ -15,12 +15,14 @@
     <None Remove="Mapping\" />
     <None Remove="Queries\" />
     <None Remove="Handlers\" />
+    <None Remove="Commands\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\" />
     <Folder Include="Mapping\" />
     <Folder Include="Queries\" />
     <Folder Include="Handlers\" />
+    <Folder Include="Commands\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
