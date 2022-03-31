@@ -10,8 +10,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Dtos\" />
+    <None Remove="AutoMapper" />
+    <None Remove="Mapping\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\" />
+    <Folder Include="Mapping\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
   </ItemGroup>
 </Project>
