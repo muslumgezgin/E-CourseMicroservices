@@ -20,7 +20,7 @@ namespace FreeCourse.IdentityServer
             new ApiResource("resource_basket"){Scopes ={ "basket_fullpermission" } },
             new ApiResource("resource_discount"){Scopes ={ "discount_fullpermission" } },
             new ApiResource("resource_order"){Scopes ={ "order_fullpermission" } },
-
+            new ApiResource("resource_fakepayment"){Scopes ={ "fakepayment_fullpermission" } },
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
 
         };
@@ -48,7 +48,7 @@ namespace FreeCourse.IdentityServer
                 new ApiScope("basket_fullpermission","full persmissopm for basket api"),
                 new ApiScope("discount_fullpermission","full persmissopm for discount api"),
                 new ApiScope("order_fullpermission","full persmissopm for order api"),
-
+                new ApiScope("fakepayment_fullpermission","full persmissopm for fake payment api"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
 
             };
@@ -82,7 +82,8 @@ namespace FreeCourse.IdentityServer
                         "roles",
                         "basket_fullpermission",
                         "discount_fullpermission",
-                        "order_fullpermission"
+                        "order_fullpermission",
+                        "fakepayment_fullpermission"
                     },
                     AccessTokenLifetime=1*60*60,
                     RefreshTokenExpiration=TokenExpiration.Absolute,
