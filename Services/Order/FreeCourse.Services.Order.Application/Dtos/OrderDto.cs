@@ -5,6 +5,7 @@ namespace FreeCourse.Services.Order.Application.Dtos
 {
 	public class OrderDto
 	{
+
         public int Id { get; set; }
 
         public DateTime CreatedDate { get; set; }
@@ -13,7 +14,7 @@ namespace FreeCourse.Services.Order.Application.Dtos
 
         public string BuyerId { get; set; }
 
-        public List<OrderItemDto> _orderItems { get; set; }
+        public List<OrderItemDto> OrderItems { get; set; }
 
     }
 }

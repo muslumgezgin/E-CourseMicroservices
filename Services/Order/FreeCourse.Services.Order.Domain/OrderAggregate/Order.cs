@@ -37,7 +37,7 @@ namespace FreeCourse.Services.Order.Domain.OrderAggregate
         public void AddOrderItem(string productId,string productname,decimal price,string pictureUrl)
         {
             var existProduct = _orderItems.Any(x => x.ProductId == productId);
-            if(existProduct)
+            if(!existProduct)
             {
                 var newOrderItem = new OrderItem(productId, productname, pictureUrl, price);
 
