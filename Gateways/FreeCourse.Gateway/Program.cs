@@ -18,6 +18,11 @@ namespace FreeCourse.Gateway
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostinContex, config) =>
+                {
+                    config.AddJsonFile($"configuration.{hostinContex.HostingEnvironment.EnvironmentName.ToLower()}.json")
+                    .AddEnvironmentVariables();
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

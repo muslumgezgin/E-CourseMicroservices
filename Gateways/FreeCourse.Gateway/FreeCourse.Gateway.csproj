@@ -10,4 +10,8 @@
   <ItemGroup>
     <PackageReference Include="Ocelot" Version="17.0.1" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="configuration.development.json" />
+    <Content Remove="configuration.production.json" />
+  </ItemGroup>
 </Project>
