@@ -7,3 +7,4 @@
     -fakePaymentApi=>5016
 
 IdentitiyServer=>5001
+Gateway=> 5000
