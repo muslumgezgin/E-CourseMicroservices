@@ -21,6 +21,7 @@ namespace FreeCourse.IdentityServer
             new ApiResource("resource_discount"){Scopes ={ "discount_fullpermission" } },
             new ApiResource("resource_order"){Scopes ={ "order_fullpermission" } },
             new ApiResource("resource_fakepayment"){Scopes ={ "fakepayment_fullpermission" } },
+            new ApiResource("resource_gateway"){Scopes ={ "gateway_fullpermission" } },
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
 
         };
@@ -49,6 +50,7 @@ namespace FreeCourse.IdentityServer
                 new ApiScope("discount_fullpermission","full persmissopm for discount api"),
                 new ApiScope("order_fullpermission","full persmissopm for order api"),
                 new ApiScope("fakepayment_fullpermission","full persmissopm for fake payment api"),
+                new ApiScope("gateway_fullpermission","full persmissopm for gateway api"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
 
             };
@@ -62,7 +64,13 @@ namespace FreeCourse.IdentityServer
                     ClientId = "WebMvcClient",
                     ClientSecrets = { new Secret("secret".Sha256()) },
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowedScopes={ "catalog_fullpermission", "photo_stock_fullpermission", IdentityServerConstants.LocalApi.ScopeName }
+                    AllowedScopes=
+                    {
+                        "catalog_fullpermission",
+                        "photo_stock_fullpermission",
+                        "gateway_fullpermission",
+                        IdentityServerConstants.LocalApi.ScopeName
+                    }
                 },
 
                 new Client
@@ -83,7 +91,8 @@ namespace FreeCourse.IdentityServer
                         "basket_fullpermission",
                         "discount_fullpermission",
                         "order_fullpermission",
-                        "fakepayment_fullpermission"
+                        "fakepayment_fullpermission",
+                        "gateway_fullpermission"
                     },
                     AccessTokenLifetime=1*60*60,
                     RefreshTokenExpiration=TokenExpiration.Absolute,
