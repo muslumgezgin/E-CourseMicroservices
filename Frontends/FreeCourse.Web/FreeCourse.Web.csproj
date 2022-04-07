@@ -9,10 +9,12 @@
     <None Remove="Services\Interfaces\" />
     <None Remove="IdentityModel" />
     <None Remove="Microsoft.IdentityModel.Protocols.OpenIdConnect" />
+    <None Remove="Views\Auth\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="Services\Interfaces\" />
+    <Folder Include="Views\Auth\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\FreeCourse.Shared\FreeCourse.Shared.csproj">
