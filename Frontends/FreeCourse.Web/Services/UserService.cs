@@ -9,7 +9,7 @@ namespace FreeCourse.Web.Services
 {
     public class UserService : IUserService
     {
-        private readonly HttpClient _httpClient
+        private readonly HttpClient _httpClient;
         public UserService(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -17,7 +17,6 @@ namespace FreeCourse.Web.Services
 
         public async Task<UserViewModel> Getuser()
         {
-
             return await _httpClient.GetFromJsonAsync<UserViewModel>("/api/user/getuser");
         }
     }

@@ -10,11 +10,15 @@
     <None Remove="IdentityModel" />
     <None Remove="Microsoft.IdentityModel.Protocols.OpenIdConnect" />
     <None Remove="Views\Auth\" />
+    <None Remove="Handler\" />
+    <None Remove="UnAuthorizedException\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="Services\Interfaces\" />
     <Folder Include="Views\Auth\" />
+    <Folder Include="Handler\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\FreeCourse.Shared\FreeCourse.Shared.csproj">
