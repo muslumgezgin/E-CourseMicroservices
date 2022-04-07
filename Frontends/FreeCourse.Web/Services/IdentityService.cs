@@ -49,7 +49,8 @@ namespace FreeCourse.Web.Services
                 throw discovery.Exception;
             }
 
-            var refreshToken = await _httpContextAccessor.HttpContext.GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
+            var refreshToken = await _httpContextAccessor.HttpContext.GetTokenAsync
+                (OpenIdConnectParameterNames.RefreshToken);
 
             RefreshTokenRequest refreshTokenRequest = new()
             {
@@ -82,7 +83,8 @@ namespace FreeCourse.Web.Services
             var properties = authenticationResult.Properties;
             properties.StoreTokens(authenticationTokens);
 
-            await _httpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+            await _httpContextAccessor.HttpContext.SignInAsync
+                (CookieAuthenticationDefaults.AuthenticationScheme,
                 authenticationResult.Principal,properties);
 
             return token;
@@ -91,7 +93,31 @@ namespace FreeCourse.Web.Services
 
         public async Task RevokeRefreshToken()
         {
-            throw new NotImplementedException();
+            var discovery = await _httpclient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
+            {
+                Address = _serviceApiSettings.BaseUrl,
+                Policy = new DiscoveryPolicy { RequireHttps = false }
+            });
+
+            if (discovery.IsError)
+            {
+                throw discovery.Exception;
+            }
+
+            var refreshToken = await _httpContextAccessor.HttpContext.GetTokenAsync
+                (OpenIdConnectParameterNames.RefreshToken);
+
+            TokenRevocationRequest tokenRevocationRequest = new TokenRevocationRequest()
+            {
+                ClientId = _clientSettings.WebClientForUser.ClientId,
+                ClientSecret = _clientSettings.WebClientForUser.ClientSecret,
+                Address = discovery.RevocationEndpoint,
+                Token = refreshToken,
+                TokenTypeHint= "refresh_token"
+            };
+
+            await _httpclient.RevokeTokenAsync(tokenRevocationRequest);
+
         }
 
         public async Task<Response<bool>> SignIn(SigninInput signinInput)
