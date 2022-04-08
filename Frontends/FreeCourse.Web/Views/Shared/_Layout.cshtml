@@ -25,6 +25,17 @@
 
                     @if(User.Identity.IsAuthenticated)
                     {
+                       <ul class="navbar-nav">
+                           <li class="nav-item dropdown">
+                               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                   @User.Identity.Name
+                               </a>
+                               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                   <li><a class="dropdown-item" asp-controller="User" asp-action="Index">Profile</a></li>
+                                   <li><a class="dropdown-item" asp-controller="Auth" asp-action="LogOut">LogOut</a></li>
+                               </ul>
+                           </li>
+                       </ul>
                     }
                     else
                     {
@@ -46,7 +57,7 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/ootstrap-5.1.3/js/bootstrap.js"></script>
+    <script src="~/lib/bootstrap-5.1.3/js/bootstrap.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

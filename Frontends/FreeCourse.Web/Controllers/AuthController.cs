@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using FreeCourse.Web.Models;
 using FreeCourse.Web.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -50,7 +52,14 @@ namespace FreeCourse.Web.Controllers
 
             return RedirectToAction(nameof(Index), "Home");
 
+        }
 
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await _identityService.RevokeRefreshToken();
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
     }
 }
