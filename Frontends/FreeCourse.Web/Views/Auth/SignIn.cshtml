@@ -10,7 +10,7 @@
 
             <div class="card-body">
 
-                <h5 class="card-title">Üye Giriş</h5>
+                <h5 class="card-title">User Login</h5>
                 <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                 <form asp-controller="Auth" asp-action="SignIn" method="post">
                     <div class="mb-3">
@@ -27,7 +27,7 @@
                         <input type="checkbox" asp-for="IsRemember" class="form-check-input" id="exampleCheck1">
                         <label asp-for="IsRemember" class="form-check-label" for="exampleCheck1"></label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Giriş yap</button>
+                    <button type="submit" class="btn btn-primary">SignIn</button>
                 </form>
             </div>
         </div>

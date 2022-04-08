@@ -12,6 +12,7 @@
     <None Remove="Views\Auth\" />
     <None Remove="Handler\" />
     <None Remove="UnAuthorizedException\" />
+    <None Remove="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -19,6 +20,7 @@
     <Folder Include="Views\Auth\" />
     <Folder Include="Handler\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\FreeCourse.Shared\FreeCourse.Shared.csproj">

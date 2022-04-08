@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using FreeCourse.Web.Exceptions;
 using FreeCourse.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
@@ -53,6 +54,7 @@ namespace FreeCourse.Web.Handler
             if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
                 // throw mistake
+                throw new UnAuthorizedException();
             }
 
             return response;

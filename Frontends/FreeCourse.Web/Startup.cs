@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FreeCourse.Web.Handler;
 using FreeCourse.Web.Models;
 using FreeCourse.Web.Services;
 using FreeCourse.Web.Services.Interfaces;
@@ -30,6 +31,7 @@ namespace FreeCourse.Web
             services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
             services.AddHttpContextAccessor();
 
+            services.AddScoped<ResourceOwnerPasswordTokenHandler>();
             services.AddHttpClient<IIdentityService, IdentityService>();
 
             var serviceApiSetting =  Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
@@ -37,7 +39,7 @@ namespace FreeCourse.Web
             services.AddHttpClient<IUserService, UserService>(opt =>
             {
                 opt.BaseAddress = new Uri(serviceApiSetting.IdentityBaseUri);
-            });
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
    
 
 
