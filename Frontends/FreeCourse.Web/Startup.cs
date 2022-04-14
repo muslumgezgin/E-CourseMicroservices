@@ -34,6 +34,7 @@ namespace FreeCourse.Web
             services.Configure<ServiceApiSettings>(Configuration.GetSection("ServiceApiSettings"));
             services.AddHttpContextAccessor();
 
+            services.AddAccessTokenManagement();
             services.AddScoped<ISharedIdentityService, SharedIdentityService>();
             services.AddScoped<ResourceOwnerPasswordTokenHandler>();
             services.AddScoped<ClientCredentialTokenHandler>();
@@ -45,7 +46,6 @@ namespace FreeCourse.Web
             {
                 opt.BaseAddress = new Uri($"{serviceApiSetting.GatewayBaseUri}/{serviceApiSetting.Catalog.Path}");
             }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
 
             services.AddHttpClient<IUserService, UserService>(opt =>
             {
