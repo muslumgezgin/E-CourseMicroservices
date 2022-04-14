@@ -15,6 +15,7 @@
     <None Remove="Views\User\" />
     <None Remove="Models\Catalog\" />
     <None Remove="Views\Courses\" />
+    <None Remove="IdentityModel.AspNetCore" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -32,7 +33,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="IdentityModel" Version="5.1.0" />
     <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="6.10.0" />
+    <PackageReference Include="IdentityModel.AspNetCore" Version="3.0.0" />
   </ItemGroup>
 </Project>
