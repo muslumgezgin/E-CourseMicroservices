@@ -6,6 +6,7 @@ using FreeCourse.Shared.Services;
 using FreeCourse.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -31,6 +32,17 @@ namespace FreeCourse.Web.Controllers
         {
             var userId = _sharedIdentityService.GetUserId; 
             return View(await _catalogService.GetAllCourseByUserIdAsync(userId));
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            var categories = await _catalogService.GetAllCategoryAsync();
+
+            ViewBag.categoryList = new SelectList(categories, "Id", "Name");
+
+
+            return View();
+
         }
     }
 }
