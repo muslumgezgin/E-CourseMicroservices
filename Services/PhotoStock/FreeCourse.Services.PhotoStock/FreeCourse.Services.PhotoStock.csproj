@@ -15,16 +15,20 @@
     <None Remove="wwwrooot\Photos\" />
     <None Remove="Dtos\" />
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="wwwroor\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Dtos\" />
     <Folder Include="wwwroot\" />
     <Folder Include="wwwroot\Photos\" />
-    <Folder Include="Dtos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\FreeCourse.Shared\FreeCourse.Shared.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\Photos\" />
   </ItemGroup>
 </Project>
