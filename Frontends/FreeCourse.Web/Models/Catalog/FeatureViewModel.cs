@@ -7,7 +7,7 @@ namespace FreeCourse.Web.Models.Catalog
 	{
         [Display(Name ="Course Duration")]
         [Required]
-        public string Duration { get; set; }
+        public int Duration { get; set; }
     }
 }
 
