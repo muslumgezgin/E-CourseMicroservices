@@ -9,6 +9,11 @@ namespace FreeCourse.Web.Models.Catalog
 
         public string Description { get; set; }
 
+        public string ShortDescription
+        {
+            get => Description.Length > 100 ? Description.Substring(0, 100) + "..." : Description;
+        }
+
         public string UserID { get; set; }
 
         public decimal Price { get; set; }
