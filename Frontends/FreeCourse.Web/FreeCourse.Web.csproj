@@ -19,6 +19,7 @@
     <None Remove="Models\PhotoStocks\" />
     <None Remove="Helpers\" />
     <None Remove="Models\Baskets\" />
+    <None Remove="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -32,6 +33,7 @@
     <Folder Include="Models\PhotoStocks\" />
     <Folder Include="Helpers\" />
     <Folder Include="Models\Baskets\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\FreeCourse.Shared\FreeCourse.Shared.csproj">
