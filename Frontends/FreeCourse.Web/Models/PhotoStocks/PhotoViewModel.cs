@@ -1,5 +1,4 @@
-﻿using System;
-namespace FreeCourse.Web.Models.PhotoStocks
+﻿namespace FreeCourse.Web.Models.PhotoStocks
 {
 	public class PhotoViewModel
 	{

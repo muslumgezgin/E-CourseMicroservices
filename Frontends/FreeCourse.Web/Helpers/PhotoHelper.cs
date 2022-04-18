@@ -1,5 +1,4 @@
-﻿using System;
-using FreeCourse.Web.Models;
+﻿using FreeCourse.Web.Models;
 using Microsoft.Extensions.Options;
 
 namespace FreeCourse.Web.Helpers

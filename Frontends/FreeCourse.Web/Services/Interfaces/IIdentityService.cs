@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using FreeCourse.Shared.Dtos;
 using FreeCourse.Web.Models;
 using IdentityModel.Client;

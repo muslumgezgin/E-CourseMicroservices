@@ -1,5 +1,4 @@
-﻿using System;
-namespace FreeCourse.Web.Models.Baskets
+﻿namespace FreeCourse.Web.Models.Baskets
 {
 	public class BasketItemViewModel
 	{

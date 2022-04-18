@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using FreeCourse.Shared.Dtos;
 using FreeCourse.Web.Helpers;
-using FreeCourse.Web.Models;
 using FreeCourse.Web.Models.Catalog;
 using FreeCourse.Web.Services.Interfaces;
 

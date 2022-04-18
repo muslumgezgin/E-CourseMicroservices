@@ -1,5 +1,4 @@
-﻿using System;
-namespace FreeCourse.Web.Models.Catalog
+﻿namespace FreeCourse.Web.Models.Catalog
 {
 	public class CategoryViewModel
 	{

@@ -1,5 +1,4 @@
-﻿using System;
-namespace FreeCourse.Web.Models
+﻿namespace FreeCourse.Web.Models
 {
 	public class ClientSettings
 	{
