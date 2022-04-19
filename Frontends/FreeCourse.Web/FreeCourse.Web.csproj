@@ -20,6 +20,7 @@
     <None Remove="Helpers\" />
     <None Remove="Models\Baskets\" />
     <None Remove="Extensions\" />
+    <None Remove="Views\Basket\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -34,6 +35,7 @@
     <Folder Include="Helpers\" />
     <Folder Include="Models\Baskets\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Views\Basket\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\FreeCourse.Shared\FreeCourse.Shared.csproj">

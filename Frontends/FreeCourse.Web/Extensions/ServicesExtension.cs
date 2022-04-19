@@ -34,7 +34,7 @@ namespace FreeCourse.Web.Extensions
 
             services.AddHttpClient<IBasketService, BasketService>(opt =>
             {
-                opt.BaseAddress = new Uri(serviceApiSetting.Basket.Path);
+                opt.BaseAddress = new Uri($"{serviceApiSetting.GatewayBaseUri}/{serviceApiSetting.Basket.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
         }

@@ -28,14 +28,14 @@ namespace FreeCourse.Web.Services
                 {
                     basket.BasketItems.Add(basketItemViewModel);
                 }
-                else
-                {
-                    basket = new BasketViewModel();
-                    basket.BasketItems.Add(basketItemViewModel);
-                }
-
-                await SaveOrUpdate(basket);
             }
+            else
+            {
+                basket = new BasketViewModel();
+                basket.BasketItems.Add(basketItemViewModel);
+            }
+
+            await SaveOrUpdate(basket);
         }
 
         public Task<bool> ApplyDiscoun(string discountCode)
@@ -101,7 +101,7 @@ namespace FreeCourse.Web.Services
 
         public async Task<bool> SaveOrUpdate(BasketViewModel basketViewModel)
         {
-            var response = await _httpClient.PostAsJsonAsync<BasketViewModel>("baslets",basketViewModel);
+            var response = await _httpClient.PostAsJsonAsync<BasketViewModel>("baskets",basketViewModel);
 
             return response.IsSuccessStatusCode;
         }

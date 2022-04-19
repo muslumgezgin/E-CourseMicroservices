@@ -25,7 +25,8 @@ namespace FreeCourse.Web.Controllers
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-            return View(await _basketService.Get());
+            var basket = await _basketService.Get();
+            return View(basket);
         }
 
         public async Task<IActionResult> AddBasketItem(string courseId)

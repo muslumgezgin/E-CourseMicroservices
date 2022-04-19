@@ -6,6 +6,11 @@ namespace FreeCourse.Web.Models.Baskets
 {
 	public class BasketViewModel
 	{
+        public BasketViewModel()
+        {
+            _basketItems = new List<BasketItemViewModel>();
+        }
+
         public string UserId { get; set; }
 
         public string DiscountCode { get; set; }
