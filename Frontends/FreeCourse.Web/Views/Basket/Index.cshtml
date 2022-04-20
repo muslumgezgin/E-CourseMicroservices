@@ -21,7 +21,10 @@
                     {
                     <tr>
                         <td>@item.CourseName</td>
-                        <td>@item.GetCurrentPrice Euro</td>
+                        <td>
+                            @item.GetCurrentPrice Euro
+                            @(Model.HasDiscount ? $"%{Model.DiscountRate.Value} has been applied" : "")
+                        </td>
                         <td>
                             <a class="btn btn-danger" asp-route-courseId="@item.CourseId" asp-controller="Basket" asp-action="RemoveBasketItem">Delete</a>
                         </td>
@@ -44,24 +47,28 @@
                 </table>
 
                 <form asp-controller="Basket" asp-action="ApplyDiscount">
-                    @if(Model.HasDiscount)
+                    @if (Model.HasDiscount)
                     {
                         <div class="alert alert-success">
                             "@Model.DiscountCode" has been applied
+                            <a asp-controller="Basket" asp-action="CancelApplyDiscount">cancel</a>
                         </div>
 
                     }
-                    @if(TempData["discountStatus"] != null && (bool)TempData["discountStatus"] == false)
+                    <div class="input-group mb-3">
+                        <input type="text" name="DiscountApplyInput.Code" class="form-control" />
+                        <button type="submit" class="btn btn-outline-secondary">Apply</button>
+                    </div>
+                    @if (TempData["discountStatus"] != null && (bool)TempData["discountStatus"] == false)
                     {
-                        <div class="text=danger"> Discount code is not valid</div>
+                        <div class="text-danger"> Discount code is not valid</div>
 
                     }
 
-                    <div class="input-group mb-3">
-                        <input type="text" name="DiscountApplyInput.Code" class="form-control" />
-                        <div asp-validation-summary="All"></div>
-                        <button type="submit" class="btn btn-outline-secondary">Apply</button>
-                    </div>
+                    @if (TempData["discountError"] != null)
+                    {
+                        <div class="text-danget">@TempData["discountError"]</div>
+                    }
 
                 </form>
             }
