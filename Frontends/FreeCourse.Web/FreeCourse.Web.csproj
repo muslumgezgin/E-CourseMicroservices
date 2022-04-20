@@ -24,6 +24,7 @@
     <None Remove="Views\Basket\" />
     <None Remove="FluentValidation.AspNetCore" />
     <None Remove="Validators\" />
+    <None Remove="Models\Discount\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -40,6 +41,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="Views\Basket\" />
     <Folder Include="Validators\" />
+    <Folder Include="Models\Discount\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\FreeCourse.Shared\FreeCourse.Shared.csproj">
