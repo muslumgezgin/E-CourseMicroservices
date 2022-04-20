@@ -40,7 +40,7 @@ namespace FreeCourse.Web.Services
             await SaveOrUpdate(basket);
         }
 
-        public async Task<bool> ApplyDiscoun(string discountCode)
+        public async Task<bool> ApplyDiscount(string discountCode)
         {
             await CancelApplyDiscount();
 
@@ -61,8 +61,7 @@ namespace FreeCourse.Web.Services
             basket.DiscountCode = hasDiscount.Code;
             basket.DiscountRate = hasDiscount.Rate;
             await SaveOrUpdate(basket);
-
-            return truel
+            return true;
 
         }
 
