@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FreeCourse.Services.FakePayment.Models;
 using FreeCourse.Shared.ControllerBases;
 using FreeCourse.Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,7 @@ namespace FreeCourse.Services.FakePayment.Controllers
     {
 
         [HttpPost]
-        public IActionResult RecivePayment()
+        public IActionResult RecivePayment(PaymentDto paymentDto)
         {
             return CreateActionResultInstance(Response<NoContent>.Success(200));
         }
