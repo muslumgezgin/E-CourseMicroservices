@@ -4,6 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Custom' " />
   <ItemGroup>
     <None Remove="Services\" />
     <None Remove="Services\Interfaces\" />
@@ -21,6 +22,8 @@
     <None Remove="Models\Baskets\" />
     <None Remove="Extensions\" />
     <None Remove="Views\Basket\" />
+    <None Remove="FluentValidation.AspNetCore" />
+    <None Remove="Validators\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -36,6 +39,7 @@
     <Folder Include="Models\Baskets\" />
     <Folder Include="Extensions\" />
     <Folder Include="Views\Basket\" />
+    <Folder Include="Validators\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\FreeCourse.Shared\FreeCourse.Shared.csproj">
@@ -45,5 +49,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="6.10.0" />
     <PackageReference Include="IdentityModel.AspNetCore" Version="3.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.4.0" />
   </ItemGroup>
 </Project>
