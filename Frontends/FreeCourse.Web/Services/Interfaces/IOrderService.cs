@@ -12,7 +12,7 @@ namespace FreeCourse.Web.Services.Interfaces
 		// async with rabbitmq
 		Task SuspenInfo(CheckOutInfoInput checkOutInfo);
 
-		Task<OrderViewModel> GetOrder();
+		Task<List<OrderViewModel>> GetOrder();
 	}
 }
 
