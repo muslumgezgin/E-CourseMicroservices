@@ -11,10 +11,12 @@
     <None Remove="Dtos\" />
     <None Remove="ControllerBase\" />
     <None Remove="Services\" />
+    <None Remove="Messages\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\" />
     <Folder Include="ControllerBases\" />
     <Folder Include="Services\" />
+    <Folder Include="Messages\" />
   </ItemGroup>
 </Project>
