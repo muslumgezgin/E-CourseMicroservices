@@ -11,7 +11,7 @@ namespace FreeCourse.Web.Services.Interfaces
 		Task<OrderCreatedViewModel> CrateOrder(CheckOutInfoInput checkOutInfo);
 
 		// async with rabbitmq
-		Task SuspenInfo(CheckOutInfoInput checkOutInfo);
+		Task<OrderSuspendViewModel> SuspenOrder(CheckOutInfoInput checkOutInfo);
 
 		Task<List<OrderViewModel>> GetOrder();
 	}

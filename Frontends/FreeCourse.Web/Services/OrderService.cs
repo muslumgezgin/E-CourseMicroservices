@@ -106,9 +106,63 @@ namespace FreeCourse.Web.Services
             return response.Data;
         }
 
-        public Task SuspenInfo(CheckOutInfoInput checkOutInfo)
+        public async Task<OrderSuspendViewModel> SuspenOrder(CheckOutInfoInput checkOutInfo)
         {
-            throw new NotImplementedException();
+            var basket = await _basketService.Get();
+
+            var orderCreateInput = new OrderCreateInput()
+            {
+                BuyerId = _sharedIdentityService.GetUserId,
+                Address = new AddressCreateInput()
+                {
+                    Province = checkOutInfo.Province,
+                    District = checkOutInfo.District,
+                    Street = checkOutInfo.Street,
+                    Line = checkOutInfo.Line,
+                    ZipCode = checkOutInfo.ZipCode
+                },
+
+            };
+
+            basket.BasketItems.ForEach(x =>
+            {
+                var orderItem = new OrderItemCreateInput()
+                {
+                    Price = x.GetCurrentPrice,
+                    ProductId = x.CourseId,
+                    PictureUrl = "",
+                    ProductName = x.CourseName
+                };
+
+                orderCreateInput.OrderItems.Add(orderItem);
+
+            });
+
+
+            var paymentInfoInput = new PaymentInfoInput()
+            {
+                CardName = checkOutInfo.CardName,
+                CardNumber = checkOutInfo.CardNumber,
+                CVC = checkOutInfo.CVV,
+                Expiration = checkOutInfo.Expiration,
+                TotalPrice = basket.TotalPrice,
+                Order =orderCreateInput
+
+            };
+
+            var responsePayment = await _paymentService.ReceivePayment(paymentInfoInput);
+
+            if (!responsePayment)
+            {
+                return new OrderSuspendViewModel()
+                {
+                    Error = "Payment did  not recive",
+                    IsSuccesfull = false
+                };
+            }
+
+
+
         }
     }
 }
