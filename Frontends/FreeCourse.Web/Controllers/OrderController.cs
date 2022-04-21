@@ -28,6 +28,32 @@ namespace FreeCourse.Web.Controllers
             ViewBag.basket = basket;
             return View(new CheckOutInfoInput());
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Checkout(CheckOutInfoInput checkOutInfoInput)
+        {
+            var orderStatus = await _orderService.CrateOrder(checkOutInfoInput);
+
+            if(!orderStatus.IsSuccesfull)
+            {
+                var basket = await _basketService.Get();
+
+                ViewBag.basket = basket;
+
+                ViewBag.error = orderStatus.Error;
+
+                return View();
+            }
+
+            return RedirectToAction(nameof(SuccessfulCheckout), new { orderId = orderStatus.OrderId });
+        }
+
+        public IActionResult SuccessfulCheckout(int orderId)
+        {
+            ViewBag.orderId = orderId;
+
+            return View();
+        }
        
     }
 }
