@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Threading.Tasks;
+using FreeCourse.Web.Models.FakePayments;
+
 namespace FreeCourse.Web.Services.Interfaces
 {
-	public class IPaymentService
+	public interface IPaymentService
 	{
-		public IPaymentService()
-		{
-		}
+		Task<bool> ReceivePayment(PaymentInfoInput paymentInfoInput);
+
 	}
 }
 

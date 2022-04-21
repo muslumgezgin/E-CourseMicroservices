@@ -24,7 +24,7 @@ namespace FreeCourse.Web.Models.Orders
 		public string Expiration { get; set; }
 
 		[Display(Name ="CVC2/CVV number")]
-		public string CVC { get; set; }
+		public string CVV { get; set; }
 
 	}
 }

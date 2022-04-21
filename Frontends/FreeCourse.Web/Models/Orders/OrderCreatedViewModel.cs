@@ -1,11 +1,11 @@
 ﻿using System;
 namespace FreeCourse.Web.Models.Orders
 {
-	public class OrderStatusViewModel
+	public class OrderCreatedViewModel
 	{
-		public OrderStatusViewModel()
-		{
-		}
-	}
+        public int OrderId { get; set; }
+        public string Error { get; set; }
+        public bool IsSuccesfull { get; set; }
+    }
 }
 

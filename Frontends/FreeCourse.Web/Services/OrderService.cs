@@ -34,7 +34,7 @@ namespace FreeCourse.Web.Services
             {
                 CardName = checkOutInfo.CardName,
                 CardNumber = checkOutInfo.CardNumber,
-                CVC = checkOutInfo.CVC,
+                CVC = checkOutInfo.CVV,
                 Expiration = checkOutInfo.Expiration,
                 TotalPrice = basket.TotalPrice
 
