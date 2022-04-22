@@ -7,6 +7,8 @@ using FreeCourse.Services.Catalog.Dtos;
 using FreeCourse.Services.Catalog.Models;
 using FreeCourse.Services.Catalog.Settings;
 using FreeCourse.Shared.Dtos;
+using FreeCourse.Shared.Messages;
+using MassTransit;
 using MongoDB.Driver;
 
 namespace FreeCourse.Services.Catalog.Services
@@ -18,7 +20,9 @@ namespace FreeCourse.Services.Catalog.Services
 
 		private readonly IMapper _mapper;
 
-		public CourseService(IMapper mapper, IDatabaseSettings databaseSettings)
+		private readonly IPublishEndpoint _publishEndpoint;
+
+		public CourseService(IMapper mapper, IDatabaseSettings databaseSettings,IPublishEndpoint publishEndpoint)
 		{
 			var client = new MongoClient(databaseSettings.ConnectionString);
 
@@ -27,9 +31,10 @@ namespace FreeCourse.Services.Catalog.Services
 			_categoryCollection = database.GetCollection<Category>(databaseSettings.CategoryCollectionName);
 			_courseCollection = database.GetCollection<Course>(databaseSettings.CourseCollectionName);
 			_mapper = mapper;
+			_publishEndpoint = publishEndpoint;
 		}
 
-		public async Task<Response<List<CourseDto>>> GetAllAsync()
+		public async Task<Shared.Dtos.Response<List<CourseDto>>> GetAllAsync()
 		{
 			var courses = await _courseCollection.Find(c => true).ToListAsync();
 
@@ -45,23 +50,23 @@ namespace FreeCourse.Services.Catalog.Services
 				courses = new List<Course>();
             }
 
-			return Response<List<CourseDto>>.Success(_mapper.Map<List<CourseDto>>(courses), 200);
+			return Shared.Dtos.Response<List<CourseDto>>.Success(_mapper.Map<List<CourseDto>>(courses), 200);
 		}
 
-		public async Task<Response<CourseDto>> GetByIdAsync(string id)
+		public async Task<Shared.Dtos.Response<CourseDto>> GetByIdAsync(string id)
         {
 			var course = await _courseCollection.Find<Course>(x => x.Id == id).FirstOrDefaultAsync();
 
 			if(course == null)
             {
-				return Response<CourseDto>.Fail("Course not found",404);
+				return Shared.Dtos.Response<CourseDto>.Fail("Course not found",404);
             }
 			course.Category = await _categoryCollection.Find<Category>(x => x.Id == course.CategoryId).FirstAsync();
 
-			return Response<CourseDto>.Success(_mapper.Map<CourseDto>(course), 200);
+			return Shared.Dtos.Response<CourseDto>.Success(_mapper.Map<CourseDto>(course), 200);
         }
 
-		public async Task <Response<List<CourseDto>>> GetAllByUserIdAsync(string userId)
+		public async Task <Shared.Dtos.Response<List<CourseDto>>> GetAllByUserIdAsync(string userId)
         {
 			var courses = await _courseCollection.Find<Course>(c => c.UserID == userId).ToListAsync();
 
@@ -76,19 +81,19 @@ namespace FreeCourse.Services.Catalog.Services
 			{
 				courses = new List<Course>();
 			}
-			return Response<List<CourseDto>>.Success(_mapper.Map<List<CourseDto>>(courses), 200);
+			return Shared.Dtos.Response<List<CourseDto>>.Success(_mapper.Map<List<CourseDto>>(courses), 200);
 		}
 
-		public async Task<Response<CourseDto>> CreateAsync(CourseCreateDto courseCreateDto)
+		public async Task<Shared.Dtos.Response<CourseDto>> CreateAsync(CourseCreateDto courseCreateDto)
         {
 			var newCourse = _mapper.Map<Course>(courseCreateDto);
 			newCourse.CreatedTime = DateTime.Now;
 			await _courseCollection.InsertOneAsync(newCourse);
 
-			return Response<CourseDto>.Success(_mapper.Map<CourseDto>(newCourse), 200);
+			return Shared.Dtos.Response<CourseDto>.Success(_mapper.Map<CourseDto>(newCourse), 200);
         }
 
-		public async Task<Response<NoContent>> UpdateAsync(CourseUpdateDto courseUpdateDto)
+		public async Task<Shared.Dtos.Response<NoContent>> UpdateAsync(CourseUpdateDto courseUpdateDto)
         {
 			var updateCourse = _mapper.Map<Course>(courseUpdateDto);
 
@@ -96,22 +101,28 @@ namespace FreeCourse.Services.Catalog.Services
 
 			if(result == null)
             {
-				return Response<NoContent>.Fail("Course not found", 404);
+				return Shared.Dtos.Response<NoContent>.Fail("Course not found", 404);
             }
-			return Response<NoContent>.Success(204);
+
+			await _publishEndpoint.Publish<CourseNameChangedEvent>(new CourseNameChangedEvent
+			{
+				CourseId = updateCourse.Id,
+				UpdatedName = updateCourse.Name
+			});
+			return Shared.Dtos.Response<NoContent>.Success(204);
         }
 
-        public async Task<Response<NoContent>> DeleteAsync(string id)
+        public async Task<Shared.Dtos.Response<NoContent>> DeleteAsync(string id)
         {
 			var result = await _courseCollection.DeleteOneAsync(c => c.Id == id);
 
 			if(result.DeletedCount >0)
             {
-				return Response<NoContent>.Success(204);
+				return Shared.Dtos.Response<NoContent>.Success(204);
             }
             else
             {
-				return Response<NoContent>.Fail("Course not fount", 404);
+				return Shared.Dtos.Response<NoContent>.Fail("Course not fount", 404);
             }
         }
 
