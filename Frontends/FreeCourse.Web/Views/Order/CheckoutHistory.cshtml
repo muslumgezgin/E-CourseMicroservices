@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "CheckoutHistory";
+}
+
+@model List<OrderViewModel>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Checkout history</h5>
+                @if(Model.Any())
+                {
+                   <table class="table table-striped table-bordered">
+                       <tr>
+                           <th>Order No</th>
+                           <th>Purchase Date</th>
+                           <th>Details</th>
+                       </tr>
+
+                       @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.CreatedDate.ToShortDateString()</td>
+                                <td>
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th>Course Name</th>
+                                            <th>Course Price</th>
+                                        </tr>
+                                        @foreach(var oItem in item.OrderItems)
+                                        {
+                                          <tr>
+                                              <td>@oItem.ProductName</td>
+                                              <td>@oItem.Price Euro</td>
+                                          </tr>
+
+                                        }
+
+                                    </table>
+
+                                </td>
+
+                            </tr>
+
+                        }
+
+                   </table>
+
+                    }
+                    else
+                    {
+                        <div class="alert alert-info"> there is no any course</div>
+
+                    }
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
