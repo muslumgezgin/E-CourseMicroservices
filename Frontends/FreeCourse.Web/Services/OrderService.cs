@@ -161,7 +161,9 @@ namespace FreeCourse.Web.Services
                 };
             }
 
+            await _basketService.Delete();
 
+            return new OrderSuspendViewModel() { IsSuccesfull = true };
 
         }
     }

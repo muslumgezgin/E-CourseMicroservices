@@ -1,4 +1,6 @@
 ﻿using System;
+using FreeCourse.Web.Models.Orders;
+
 namespace FreeCourse.Web.Models.FakePayments
 {
 	public class PaymentInfoInput
@@ -8,6 +10,7 @@ namespace FreeCourse.Web.Models.FakePayments
         public string Expiration { get; set; }
         public string CVC { get; set; }
         public decimal TotalPrice { get; set; }
+        public OrderCreateInput Order { get; set; }
 
     }
 }

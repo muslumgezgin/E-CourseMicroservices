@@ -25,9 +25,9 @@ namespace FreeCourse.Services.FakePayment.Controllers
         }
 
         [HttpPost]
-        public async IActionResult RecivePayment(PaymentDto paymentDto)
+        public async Task<IActionResult> RecivePayment(PaymentDto paymentDto)
         {
-            var sendEndPoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("que:create-order-service"));
+            var sendEndPoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:create-order-service"));
 
             var createOrderMessageCommand = new CreateOrderMessageCommand();
 
@@ -43,8 +43,8 @@ namespace FreeCourse.Services.FakePayment.Controllers
                 {
                     PictureUrl = x.PictureUrl,
                     Price = x.Price,
-                    ProductId= x.ProductId,
-                    ProductName =x.ProductName     
+                    ProductId = x.ProductId,
+                    ProductName = x.ProductName
 
                 });
 
@@ -54,7 +54,6 @@ namespace FreeCourse.Services.FakePayment.Controllers
 
             return CreateActionResultInstance(Shared.Dtos.Response<NoContent>.Success(200));
         }
-      
+
     }
 }
-

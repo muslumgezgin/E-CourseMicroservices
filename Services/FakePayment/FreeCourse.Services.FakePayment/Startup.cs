@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using FreeCourse.Services.FakePayment.Controllers;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -37,16 +38,15 @@ namespace FreeCourse.Services.FakePayment
                 {
                     cfg.Host(Configuration["RabbitMQUrl"], "/", host =>
                     {
-                        host.Username("quest");
-                        host.Password("quest");
+                        host.Username("guest");
+                        host.Password("guest");
                     });
 
-                    // cfg.ConfigureEndpoints(context);
+                    cfg.ConfigureEndpoints(context);
 
                 });
 
             });
-
 
             var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
 
