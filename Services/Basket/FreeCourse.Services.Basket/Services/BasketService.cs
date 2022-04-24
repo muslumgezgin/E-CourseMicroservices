@@ -3,6 +3,8 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using FreeCourse.Services.Basket.Dtos;
 using FreeCourse.Shared.Dtos;
+using FreeCourse.Shared.Messages;
+using StackExchange.Redis;
 
 namespace FreeCourse.Services.Basket.Services
 {
@@ -39,6 +41,27 @@ namespace FreeCourse.Services.Basket.Services
             var status = await _redisService.GetDb().StringSetAsync(basketDto.UserId, JsonSerializer.Serialize(basketDto));
 
             return status ? Response<bool>.Success(204) : Response<bool>.Fail("Basket coul not update or save", 500);
+        }
+
+        public async Task SaveOrUpdateAllKeys(CourseNameChangedEvent changedCourse)
+        {
+            var keys = _redisService.GetKeys();
+
+            foreach(var key in keys)
+            {
+                var basket = await _redisService.GetDb().StringGetAsync(key);
+
+                var basketDto = JsonSerializer.Deserialize<BasketDto>(basket);
+
+                basketDto.basketItems.ForEach(x =>
+                {
+                    x.CourseName = x.CourseId == changedCourse.CourseId ? changedCourse.UpdatedName : x.CourseName;
+                });
+
+                await SaveOrUpdate(basketDto);
+
+            }
+           
         }
     }
 }
