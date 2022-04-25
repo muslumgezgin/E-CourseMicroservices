@@ -14,6 +14,11 @@ services:
     user : root
   rabbitmg:
     image: rabbitmq:3.8.14-management
+  catalog.api:
+    image: catalog_api_image
+    build:
+      context: .
+      dockerfile: Services/Catalog/FreeCourse.Services.Catalog/Dockerfile
 volumes:
   catalogdb_volume:
   discount_volume:
