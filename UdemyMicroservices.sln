@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA63B565-8219-461A-A154-033FFA56D832}"
 	ProjectSection(SolutionItems) = preProject
 		Ports.txt = Ports.txt
+		UdemyMicroservices.sln = UdemyMicroservices.sln
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{1011CFC4-B866-4805-8B70-C55DAA19AFEB}"
