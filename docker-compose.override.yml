@@ -60,8 +60,8 @@ services:
       - "5011:80"
     depends_on:
       - catalogdb
-  identitserver.api:
-    container_name: identitserver.api
+  identityserver.api:
+    container_name: identityserver.api
     restart: on-failure
     environment:
       - ASPNETCORE_ENVIROMENT=Development
@@ -129,8 +129,21 @@ services:
       - IdentityServerURL=http://identityserver.api
     ports:
       - "5020:80"
+  aspnetcoremvc.web:
+    container_name: aspnetcoremvc.web
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ServiceApiSettings:IdentityBaseUri=http://identityserver.api
+      - ServiceApiSettings:GatewayBaseUri=http://gateway.api
+    ports:
+      - "5010:80"
+    depends_on:
+      - gateway.api
+      - identityserver.api
+      - catalog.api
+      - discount.api
+      - basket.api
+      - order.api
+      - photostock.api
+      - fakepayment.api
     
-
-
-
-  
