@@ -77,6 +77,7 @@ services:
       - IdentityServerURL=http://identityserver.api
       - RedisSettings:Port=6379
       - RedisSettings:Host=basketdb
+      - RabbitMQUrl=rabbitmq
     ports:
       - "5013:80"
     depends_on:
