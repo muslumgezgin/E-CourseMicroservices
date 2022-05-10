@@ -12,7 +12,7 @@ services:
   orderdb:
     image: mcr.microsoft.com/mssql/server:2019-latest
     user : root
-  rabbitmg:
+  rabbitmq:
     image: rabbitmq:3.8.14-management
   catalog.api:
     image: catalog_api_image

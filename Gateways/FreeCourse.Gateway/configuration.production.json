@@ -22,7 +22,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "photostock,api",
+                    "Host": "photostock.api",
                     "Port": 80
                 }
             ],
